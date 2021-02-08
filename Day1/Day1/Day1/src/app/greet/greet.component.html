@@ -1,0 +1,6 @@
+<p>Hello {{user}}</p>
+<p>Parent : {{title}}</p>
+
+<input type="number" placeholder="Enter height of btn" [(ngModel)] ='height'/>
+<br />
+<button [style.height.px]='height' [style.width.px]='width' (click)='getData()'>Click here {{user}}</button>

@@ -1,0 +1,97 @@
+Forms 
+
+Login Forms 
+
+label - username 
+label 2 - enter password 
+textbox - to enter username 
+textbox2 - to enter password 
+button 1- to submit the form 
+button 2 - to cancel the form 
+
+forms are to captuare user data 
+passwords should be atleast 8 charcater long 
+username can not be blank 
+user name must be an email 
+validation on the form 
+
+user name : dhananjay 
+
+
+
+Angular you can create forms in two ways 
+
+1- template driven forms 
+
+2- Reactive Forms 
+
+in template driven forms all these validations are part of component template 
+In a reactive forms all these validations are part of the component class 
+
+
+control --- > FormControl 
+
+FormControl takes three patamters 
+
+1. initiatl value - nullable 
+
+2. validation option - nullable , required , max length , min lenghth 
+
+3. aysnc validators - 
+
+You can map a control to an object on the class using the property binding [formControl]
+
+You can check value -{{formcontrol.value}}
+you can check status - {{formcontrol.status }} 
+
+
+conntrol ---> formControl (
+form -------> formGroup 
+
+formBuilder --- > 
+
+inital value 
+validation 
+async validator 
+
+FormArray 
+
+
+
+<app-user>
+
+<app-login>
+
+
+<app-login>
+
+</app-user>
+
+Conditional Validations
+
+we need to find out value change on the form 
+
+whethetr use is cliking on email or on password 
+
+on basis of that apply conditional validation to phone number 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

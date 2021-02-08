@@ -1,0 +1,195 @@
+Angular Masterclass - geek97 
+32 hours of training 
+10-12 hrs 
+20 hrs 
+no or little slides 
+9717098666 
+
+server side technlogies - java, PHP, .NET 
+client side techolgies - React , Angular 
+SPA - Single Page Application 
+
+a click button will refresh the whole page 
+that would happen 
+
+Angular is used to create Single Page Application 
+
+JavaScript + CSS + HTML 
+
+TypeScript - browser does not understand TypeScript 
+
+a.ts - try to run it in browser ( it wont run) 
+a.js - browers will execute that 
+
+a.ts ----> a.js (to be usersful) 
+
+conversion a.ts to a.js is known as transpilation 
+
+tsc - typescript compiler 
+
+my awesome angular app in ts ---> my awesome angular app in JS (TSC) 
+
+100-1000-10000 js FILES ( 5 MB) 
+
+step 1 : it downloads the whole JS file 
+step 2 : it interprets it 
+step 3 : execute it 
+
+Bundler - webpack 
+
+Modules in JavaScript 2016 
+import math.js 
+
+Modules - basic unit of compilation - 100 modules but there will be one main module 
+
+TSC - TypeScript compiler 
+Webpack - bundler 
+Unit Test - abc def 
+
+
+  add , delete  - in  a TS file 
+  button, textbox - HTML 
+  styling - CSS 
+
+TS + CSS+ HTML = component1.ts = component1.js 
+component must be part of a module1- module1.js 
+
+TS + CSS+ HTML = component 2 - component1.js
+module 2 - module2.js 
+
+TSC + webpack 
+
+Anngular CLI - Angular Common Language Interface 
+
+set of commands
+
+Setting up enviornment 
+
+1. install nodejs
+
+node -v 
+
+2. npm install -g @angular/cli 
+
+ng --version 
+
+3. ng new app1
+
+
+What is package.json 
+
+
+expressjs 
+sqlserverjs 
+
+npm install 
+
+node_modules 
+
+install nodejs 
+install angular cli 
+ng new myapp 
+ng serve 
+
+
+Data Binding in Angular 
+
+TS ----- HTML 
+name = "Jacob" (displaying)--------> {{name}} One way binding a.k.a Interpolation 
+
+height = 90 (set a property) --------------> [style.height.px]='height' Property Bidning 
+
+
+getData()  <-------- (click)='getData()' , Event Binding 
+
+HTML <-----> TS 
+Two Way Data Binding = Property Binding + Event Binding 
+                     =  []  + () 
+                     =[()] 
+
+
+
+
+Modules - container 
+Component - HTML + CSS+ TS 
+
+Directives 
+
+1. it may change attribute of a html element - Attribute Directive 
+text box - enter credit card information 16 charcaters - numbers - there sould be a dash after each 4 digit 
+
+95% times - custom attribute directive 
+
+2. Structural Directives - *ngIf *ngFor 
+
+95% times you use them and very very raraly you create custom structural directive 
+
+3. Component 
+
+Angular CLI 
+modules
+components 
+directives 
+*ngFor, *ngIf 
+Data Bindings 
+
+
+Angular Pipe 
+
+It takes an input and transform the input to a specfied output without changing the undelying architecture of input data 
+
+productname --> upper case pipe ---> upper case product name 
+
+pipe is a function 
+
+built in pipes 
+
+
+HTML + CSS+ JS 
+
+Web Component 1 . css button : red 
+web component 2 . ccc button : green 
+
+application 
+
+web component 1 
+web component 2 
+
+Shadow DOM - encapsulates the CSS 
+
+Angular Component - HTML + CSS + TS 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+---------------------One way binding--------------
+
+TS --> HTML
+TS <-- HTML
+
+name = "Vivek" (displaying) ----> {{name}} One way binding  -------------------> Interpolation
+height = 90 (set a property) ---> [style.height.px] = 'height' ----------------> Property binding
+getData() <---- (click) = 'getData()' -----------------------------------------> Event binding
+
+---------------------Two way binding (Angular doesn't have by default)-----------------
+
+HTML <---> TS
+
+Two way = Property + Event 
+	= [()]
+	= eg: [(ngModel)]
+
+----------------------IMPORTANT-----------
+
+ZONE.JS:
+-makes popular html control events as an asynchronous event
+-events are called as in they are running inside 'ngZone'
+-events who are present inside 'ngZone' can only use event binding
+-EG: jquery-calendar cannot use event binding
+-angular runs 'Change Detection' on them(it is costly operation for angular)
+-ChangeDetection : makes sure html & ts are in sync
+-As it is 'costly operation' angular has only incorporated popular events in ngZone
+-To add anything inside zone.js we can use 'EVENTEMITTER'
+
+
+Angular's change detection kicks in to propagate the changes;
+Change detection goes through every components in the component tree (from top to bottom) to check if the model it depends on changed; 
+If Yes, it will update the component;
+Angular updates the component's view (DOM)
+
+
+
+-------------Directives------------------
+
+Modules - Container
+Components - HTML + CSS + TS
+Directives
+
+1. Attribute Directive 
+It may change attr of an element - EG: Change arttr of textbox to take credit card number
+
+2. Structural Directive - *ngIf, *ngFor (it starts from *)
+Structure of DOM changes or html element
+
+3. Component
+Creates a new element - <app-root>
+
+
+-------------Pipe--------------
+
+Takes input & transform the input to a specified output w/o changing underlying architecture of input data.
+
+Built in pipes
+-uppercase
+-date
+-currency
+
+
+---------Shadow DOM --------
+
+-Encapsulates the CSS
+-Angular does not create ShadowDom by def but it works in emulated mode by def
+	Emulated: does nt apply 
+	None: everywhere
+	ShadowDom: that component & its child components
+

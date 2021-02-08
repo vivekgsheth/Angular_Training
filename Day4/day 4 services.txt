@@ -1,0 +1,66 @@
+Login
+API callings 
+Logs
+Share Data among multiple components which are not related to each other
+Any common functionalities of your application, you should put in the service 
+
+Directives are all about DOM 
+Pipes are all about transform output on the DOM without changing input data
+Services has nothing to do with DOM - Pure class without any template or HTML 
+
+Since service is a class , so to use it you need to create an object of it. 
+
+If we create a class for which only one object can be created. - Singelton 
+
+Class A {} -- Component Foo 
+
+  let a = new A(); 
+
+let appservice = new AppService(); 
+
+
+Service 
+
+Step 1 : ng g s servicename (Create a service) 
+
+Step 2 : Write functions inside the service (Implement the service) 
+
+Step 3 : provideIn :root  (Provide the service) 
+Step 4 : private appservice : AppService (Inject the service ) 
+
+Step 5 : getData() -  (Use the service) 
+
+Create --> Implement --> Provide --> Inject --> Use
+
+
+Angular Service is a singelton class
+Angular service is Tree-shakeable 
+
+
+Hey what is the difference if I use provideIn or I use providers array 
+
+You should use providers array if service is going to be used in dynamic loaded compoents/modules 
+
+Service 1 - provideIn :'root'
+
+Service 2 -  providIn :'root'
+
+Januaray 2022 
+
+Log from Oracle by using API2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

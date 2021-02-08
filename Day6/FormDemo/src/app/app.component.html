@@ -1,0 +1,49 @@
+
+
+<!-- <input type="text" [formControl]='email' /> 
+<br>
+{{email.value | json}}
+<br>
+{{email.status | json}} -->
+
+<div class="container">
+  <h2>Login Form</h2>
+  <hr />
+  <div class="row">
+    <div class="col-md-8">
+      <form  (ngSubmit)='loginUser()' [formGroup]='login' novalidate class="form">
+        <input type="text" placeholder="Enter username" formControlName='email' class="form-control"/>
+        <div class="alert alert-danger"
+        *ngIf="(login.get('email').hasError('required') && login.get('email').touched)">Email is required</div>
+        <div class="alert alert-danger"
+        *ngIf="(login.get('email').invalid && login.get('email').touched )">Email is invalid</div>
+        <br />
+        <input type="text" placeholder="Enter password" formControlName='password' class="form-control"/>
+        <div class="alert alert-danger"
+        *ngIf="!login.get('password').valid && login.get('password').touched">Password is invalid</div>
+        <br />
+        <input class="form-control" formControlName="age" type="text" placeholder="Enter age"/>
+        <div class="alert alert-danger"
+        *ngIf="login.get('age').dirty && login.get('age').errors && login.get('age').errors.ageRange">Age should be between {{minAge}} to {{maxAge}} years</div>
+        <br />
+        <input type="number" class="form-control" placeholder="Enter phonenumber" formControlName="phonenumber"/>
+        <div class="alert alert-danger"
+          *ngIf="(login.get('phonenumber').hasError('required') && login.get('phonenumber').touched)">Phone number is required</div>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" value="email" formControlName="notification" />Email
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="phone" formControlName="notification" />Phone
+        </label>
+        <br />
+        <button class='btn btn-default' [disabled]='login.invalid'>Login</button>
+      </form>
+      </div>
+  </div>
+</div>
+
+
+<!-- {{login.value | json}}
+<br>
+{{login.status | json}} -->

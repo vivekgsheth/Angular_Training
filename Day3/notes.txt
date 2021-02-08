@@ -1,0 +1,46 @@
+(container)smart comp : comp which does not have UI but talks with outside env
+(presenter)dumb comp : comp which just shows UI but does not talk with outside env
+
+Architecture:
+
+PC(parent)  <-> DB/API :
+	PLC(child1)
+	PTC(c2)
+	PDC(c3)
+
+Advtg:
+-Less no of db or api calls
+-NO need to write unit test for dumb components
+-We can use @Input() decorator to pass data from PC to other components
+
+
+
+-----TempRef variable can be used to access variables & methods of child in template of parent
+
+--- we cn read child data in parent's ts class in ngafterviewinit() method using @ViewChild
+--- we can read in ngoninit() by passing @ViewChild(ChildComp, {static: true})
+
+
+------------Read abt @ViewChild & ngAfterViewInit() & @ViewChildren ------------------------------
+
+
+
+-For getting a specific childcomponent you will need to use temprefvariable
+-If generic is used ChildComponent then whatever comes first in sequence in template will be used.
+-@ViewChildren can be used if we have same tempref var multiple times in template
+
+--Difference between @ViewChild & @ViewChildren is that:
+-----@ViewChildren cannot be used in ngOnInit() [no static property present here]
+-----@ViewChild can be used in ngOnInit() by applying {static:true}
+
+
+----------Directives---------------(ng g d directive_name)
+1. Custom Attr Directive
+
+EG: Credit card directive or Map directive
+	
+-Host : Element on which you apply attr binding (input, div, table)
+-When we need to access properties of host inside attr directive using: @HostBinding()
+-Access Events raised on the host inside attr directive : @HostListener()
+
+-exportAs prop : We can use public methods of directive and use them using tempref var

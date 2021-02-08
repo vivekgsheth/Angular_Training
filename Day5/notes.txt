@@ -1,0 +1,63 @@
+When we refresh the page:
+-DOM gets killed
+-Bundle.js is downloaded again
+
+use case: On click of a btn we need to load the module like LoginModule
+
+-----------------Behaviour of service in Eagerly Loaded module--------------
+
+-app module
+	-LogService
+
+-feature module	(new module created it is eagerly loaded)
+	-appf component	
+
+- we need to  use LogService in appf comp & also to use appf comp in app module:
+1--- we need to import the FeatureModule in 'imports=[]' of AppModule
+2--- we need to pass the component in 'exports = [AppfComponent]' in FeatureModule
+3--- we can import the service of app module & use it directly without doing anything
+
+
+-----------------------Lazy loading module---------------------------------------
+
+cmd: ng g m customers --route customers --module app.module
+
+ng g m customers: customers.module.ts
+--route: customers-routing.module.ts
+customers: all customers component files
+--module app.module: will add the routes in app-routing module
+
+IMP: -The lazy loaded module will only be downloaded once i.e. js bundle
+
+-we use <router-outlet> to dynamically load the components 
+-we use routerLink="/customers" to add the components in the app module
+
+AppModule
+	-LogService
+	-Child1Component
+FeatureModule
+	-AppfComponent
+
+CustomerModule
+	-CustomerComponent
+OrderModule
+	-OrderComponent
+
+-All components are using the LogService because we have provided it using 'providers = [LogService]' in app.module.ts-
+
+-As we are passing in providers array it will not be tree shakeable that still can be optimized by adding "{providedIn: 'any'}"
+
+VIMP----------------Ques------------
+
+
+LogService: providedIn: 'any'
+LogService is used in everymodule
+1 main + 3 eager + 5 lazy modules
+
+IMP: 	
+It will create 
+1 service obj for (main + eager)
+5 service obj for each lazy modules
+total service objects: (1+5) = 6
+
+

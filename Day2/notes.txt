@@ -1,0 +1,65 @@
+-----------AOT vs JIT-------
+
+
+
+
+
+---------Component Interaction--------
+
+
+<app-component>
+	<app-product>
+	</app-product>
+	
+	<app-sales>
+		<app-GujaratSales>
+		</app-GujaratSales>
+	</app-sales>
+</app-component>
+
+-Only Parent-Child relationship works
+-No siblings
+
+---Components are not related to each other : Use SERVICES
+---Components are related to each other :
+	Case 1: Pass data from parent to child
+		-Create @Input() decorator and set value in parent using property binding[]
+		-We can pass multiple @Input also
+		-One child can get data from more than one parent
+		-Parent -> Child -> GrandChild [We cannot directly pass data from Parent to GChild]
+		-If we modify changeDetection:OnPush data will not be updated from parent to child
+	
+	Case 2: Capture events of child to parent
+		-@Output & EventEmitter
+		Steps:
+			1- Create an event using EventEmitter - greetEvent = new EventEmitter()
+			2- Decorate that using @Output - @Output() greetEvent
+			3- Emit that event on the click(or any event) of child component - greetEvent.emit()
+			4- Handle that event in template of parent comp using event binding() - (greetEvent) = 'greetParent($event)'
+			5- Implement func in parent comp
+			
+	Case 3: Use data & properties of child comp inside HTML of parent comp
+		-TempRef variable #childData
+
+		
+	Case 4: Use data & properties of child comp inside TS of parent comp
+
+
+
+
+-------------Life Cycle Hooks---------------
+-@Input() 
+---constructor(once) > ngOnChanges > ngOnInit(once) > onOnChanges(As many times as @Input decorator prop is changed)
+IMP---In one cycle of rendering, regardless of no of changes occurred in @Input properties, ngOnChanges will be called only once.
+IMP---ngOnChanges is called only if you have any @Input decorators avail.
+
+-ngOnDoCheck() ------ Read abt that from docs
+
+
+-use setter & getter for intercepting the data coming from parent before updating child component.
+
+------------->IMP - use backtick(``) for using ${param} in string .
+
+-------------->IMP : @output & eventemitter will not effect life cycle hooks
+
+	

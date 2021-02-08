@@ -1,0 +1,99 @@
+
+-Server side tech - java,php,.net
+-Client side tech - angular,react,vue
+
+SPA - Single Page Applications
+
+-Angular is used to create SPA which can be compiled as Web app or Mobile app(using tools like Ionic)
+
+-Angular = (JS + CSS + HTML) = Client side tech
+
+Typescript(a.ts)
+-Created by Microsoft
+-Created to reduce complexity of JS
+-Browser do not understand TS
+-Transpilation: a.ts ------> a.js (so that browser can understand) 
+-tsc: Typescript compiler
+
+Browser workflow:
+1: Downloads the whole JS file
+2: Interprets it
+3: Executes it
+
+Bundler(Webpack: used in angular):
+-To bundle all js files in a single file
+
+Modules in JS 2016:
+-we can use other js files using: import math.js
+
+Modules in Angular:
+-Basic unit of compilation
+-Creates scope
+-It has one main module which will act as a strting point
+
+Components:
+-(TS + CSS + HTML)
+-Must be a part of a module
+-One main component
+
+Angular CLI cmds:
+
+1: Install node js
+Check node version : node -v
+
+2: Install angular-cli : npm install -g @angular/cli
+Check angular version : ng --version
+
+3:Create a new one: ng new app_name
+
+4: To open in vs code : code .
+ 
+5: To generate a new component : ng g c cmp_nm
+ng g c cmp_nm --flat (will not create files in new folder rather it will create in pwd)
+
+6: To generate eagerly loaded module : ng g m module_nm
+
+7: To build : ng build
+
+8: to compile & run : ng serve
+
+9: Create a pipe : ng g pipe
+
+devDependencies: dependencies which are not needed during production
+
+tslint: coding std to be followed
+
+@NgModule contents:
+-declarations is used for components & pipes
+-import array will contain shte modules to which our module is dependent upon
+
+Module types:
+1: Eagerly loaded(ng g m)
+2: Lazy loaded
+
+IMP: Module acts as a container so no unit test files are created for it. Whereas for components it will be created.
+
+polyfills.ts
+-detects the browser & converts the code into which older browser can understand (ES6)
+
+tsconfig.json
+-information abt typescript compiler
+-in which js version it should compile
+
+angular.json
+-angular app config
+-webpack config
+
+After ng build: -------------> uses?
+vendor.js: 
+polyfills.js
+main.js
+runtime.js
+styles.css
+
+
+
+Queries:
+-What is vendor.js ?
+-
+

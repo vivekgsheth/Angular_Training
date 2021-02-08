@@ -1,0 +1,107 @@
+---------------SERVICES---------------
+
+-UseCases:
+--Login
+--API calls
+--Logs
+--Share data among multiple components which are not related to each other
+--Any common functionalities of your application
+
+-IMP :
+---Directives are all abt DOM
+---Pipes are all abt transform output on DOM
+---Services has nothing to do abt DOM - Pure class without any template or HTML
+
+-Notes:
+-- Class is created with @Injectable() decorator
+-- Singleton: Only single object will be created of that class
+-- React needs to third party library for DI. Angular framework has inbuilt DI.
+
+
+-Service workflow:
+1. Create a service: ng g s service_nm
+2. Implementing service: Write functions inside service
+3. Provide a service: provideIn: root OR providers=[](AppModule)
+4. Inject the service: private appservice: AppService 
+5. Use the service - call the methods of service: getData()
+
+
+providedIn values:
+---any:
+---platform: Whenever we are exposing our service outside the application(like in case of micro frontend).
+---root(default): Accessible everywhere
+
+By default:
+-- Angular service is singleton class
+-- Angular service is tree shakeable: If service is used in application it is tree-shakeable if not used then not tree-shakeable.
+
+Tree-shakeable: It will be coming in bundle when deployed.
+
+providersArray: Service is tree shakeable, even if not used anywhere
+provideIn: Service is not tree shakeable, if not used
+
+
+---- When to use providersArray compulsory ? ------
+->When we are using our service in a dynamic loaded component.
+->Because we will not provide declaration of the lazy loaded comp so service will also become tree shakeable so it wont be coming in bundle.
+
+- We can also use providers array in components along with providedIn .
+then it will create 2 seperate services & it will be used accordingly.
+
+
+Flow:
+1. check for providers array in its own component(child2) -> parent component(app) -> current module(app) -> parent module -> main module
+2. check for (provideIn: root)
+3. If not avail then it will throw err.
+
+
+Dynamic:
+-calling component on some condition, it is still available in compiled bundle
+Lazy
+-we have to load it explicitly so it will not be available in bundle
+
+IF any of the service is same bt just the db or tbl is chged(Use case):
+--We will create a new service & change the providers array
+providers: [{provide: LogService, useClass: UpdatedLogService}]
+--The ref class written in constructor for service is not the same that is the class name of service
+ it is what is present in 'provide' section of providers array.
+
+4 opts for 'providers' array or 'providedIn':
+
+1--useClass: Same service just db or tbl is changed. We have created a new service & use that service by just adding it in 'useClass'
+so we will not need to change the name of service in all components using a prev service
+-----------Use case: 
+-LogService (prev point to SQL Server)[Jan-2021] ,
+-UpdatedLogService (new one point to Oracle)[Jan-2022](New API)
+-Can use the same token by passing (we won't need to change at 100 places where the previous service was used)
+providers=[{provide:LogService, useClass:UpdatedLogService}]
+
+2--useExisting: If already one service is provided we can use the same one by adding
+a new object & adding 'useExisting' & writing value as the same name as given in 'provide' of previous obj
+-------Use case:
+-
+-
+
+-IMP: for useClass, useExisting, useFactory : we must pass the same name for token(value of 'provide') which is the class nm of service.
+
+
+-----------------------------------ErrorHandling--------------------------------
+
+useClass--We can use ErrorHandler as a service & write some business logic & add a token as ErrorHandler & can use it ay component.
+-Whatever we write in 'ErrorService > handleError()' need to be in try-catch so that it does not show err.
+
+--Check how to use in component ????????????????????
+
+--------------------------------------------------------------------------------
+
+--Workflow: Create -> Implement -> Provide -> Inject -> Use
+--Angular compiles in reverse
+
+
+
+
+
+
+
+----------TO DO-----------------------
+-to use existing obj in useFactory?

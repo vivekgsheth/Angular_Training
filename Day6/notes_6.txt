@@ -1,0 +1,31 @@
+-----------------Forms---------------------
+Types:
+1> Template driven:
+- All the validations are part of Component Template
+- Difficult to bind with objects
+
+2> Reactive
+- All the validations are part of Component Class
+- You can easily bind data with objects
+- You can map a control to an object on the class using the property binding [formControl]
+- You can check value & status  - {{formControl.value}} & {{formControl.status}}
+
+Parameters of FormControl:
+formState	
+	-Initial value
+validatorOpts
+	-nullable required maxlength minlength
+asyncValidatorFn:
+	-EG:- We get error saying name already exists : whatever you enter gets verified with the DB or through API call with the server
+	-The user will not feel stuck he can continue to enter other values while the name will be verified 
+
+
+-To remove html validations: 'novalidate'
+
+-FormBuilder: Service which will help to get FormGroup rather than creating with new & also useful when form gets lengthy
+-Custom Validators
+-Conditional Validations
+-Template driven forms
+
+
+
