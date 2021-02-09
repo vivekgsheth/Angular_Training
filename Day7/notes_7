@@ -1,0 +1,59 @@
+Reactive programming: When source changes, it's source's responsibility to notify the consumers.
+
+RxJS:
+-Subject
+-BehaviourSubject
+-RelaySubject
+-AsyncSubject
+
+Observable:
+-Special type which emits value using the next() method
+-Can emit: data, error, completed
+
+a.next()  	//data
+a.error() 	// error
+a.complete()	// done no new value ever //  we can use this to unsubscribe from the observable
+
+Observer:
+-Consumes the observable
+-To handle the values emitted by the observable we have 3 callback functions
+
+let aobserver = {
+	data => {
+		// work with data
+	},
+	error => {
+		//work with error
+	},
+	complete => {
+		//work when complete
+	}
+};
+
+a.subscribe(aobserver);
+a.subscribe(console.log(data));
+
+IMP: First callback func will always be data first then error & then complete(sequential)
+ (regardless of the name of param used, i.e. param name can also be "error")
+
+----------------------Routing------------
+only one forRoot()
+multiple forChild()
+
+:id - to pass required params in path
+
+
+------------snapshot vs subscribe-----------
+snapshot: it will nt get updated dynamically, we will need to run ngOnInit() everytime it gets updated.
+subscribe: it will be updated acc to change in params like 'id' (it will not notify if the data is changed)
+
+switchMap: used to read param 
+canActivate: RouteGuard, it will activate the component only if canActivate return true so we can check if the user is loggedin?
+resolve: Angular’s Route Resolver class will fetch your data before the component is ready
+
+Doubts:
+-Resolve
+-SecondaryRoute
+-RouteGuards
+
+
