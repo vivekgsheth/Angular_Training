@@ -1,0 +1,75 @@
+----------------Change detection-------------
+
+Component
+
+Class ---- Template
+
+Data  ---- Display data & capture user interaction
+
+Writing our logic in the class & using interpolation
+data = 9  ----> {{data}} = 9
+data = 19 ----> {{data}} = 19
+
+-ChangeDetector runs in background so that component class is always in sync with template.
+-Every component has its own ChangeDetector
+
+-ChangeDetectorRef.detach() -> template will not be in sync with data.
+
+-When ChangeDetector runs we do not know but, if one of these things happens, it will run:
+1. Perform or Raise an event(Btn click).
+NOTE: "Only events which are part of ngZone"
+2. Whenever you make an API call, an XHR object is created & it will trigger it to run.
+3. Whenever you execute async JS func such as setInterval() .
+
+Angular Component Tree
+-Default behaviour: Whenever user clicks a btn anywhere(like child or grandchild)
+then ChangeDetector runs from Top to Bottom i.e [Root -> Childs(All) -> Grandchilds(All)][Whole tree will be traversed regardless of place of trigger]
+-Angular comp tree is a directed graph, only unidirectional flow of ChangeDetector from top to bottom.
+-No circular or bidirectional traversing.
+-After a single pass change detection tree gets stable.
+
+---------CompA: ChangeDetectionStrategy.OnPush-----------
+->changedetector for CompA will only run when a new obj is passed not if existing obj is updated i.e.
+change detector will run only when new reference is passed to @Input() data
+
+->change detector for all child components of CompA will also not run so it REDUCE NO OF CHECKS(advtg).
+
+->You detected that some changes are present &
+Now if you still want to run changeDetector without passing new obj you can do so manually by applying any of the 3 things.
+
+->Best approach:
+We can create an observable & subscribe to that we can get changes & then only changeDetector will run by cd.detectChanges()
+
+
+---------------- DIFFERENCE -------------
+-markForCheck(): Whenever next time you run changeDetection, run for this comp also.
+-detectChanges(): Manually run changeDetection at this moment for this comp & all its child comp also 
+regardless of changes happened or not.
+
+----------------async pipe-----------
+-It works with observable
+-It subscribes to data change
+-If data changes, it runs changeDetection manually
+-When component is destroyed it unsubscribes
+
+
+
+----- Detaching Pattern --------
+-Not recommended
+
+
+
+------- Best practices --------
+1. Whenever possible do lazy loading of modules
+2. Always use provideIn options
+3. Always use pipes
+4. For child components make sure to put stratergy to onPush
+5. Make sure to use async pipe
+6. If not using async pipe,  make sure to unsubscribe to observable
+7. Always make API call in service
+8. Always write DOM manipulation in the directives
+9. Never create 
+10.
+11.
+12. Be very careful & do lot of discussions 
+13. Identify the smart & dumb components
