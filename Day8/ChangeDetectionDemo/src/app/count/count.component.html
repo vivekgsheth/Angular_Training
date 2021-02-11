@@ -1,0 +1,6 @@
+<!-- <h2>Count in child : {{counter.count}}</h2>
+<button (click)='0' >Refresh Child</button> -->
+
+<div *ngIf="counter | async; let data " >
+    <h2>Count in child: {{data?.count}}</h2>
+</div>
