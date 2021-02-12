@@ -1,0 +1,110 @@
+Change Detection in Angular 
+
+
+component
+
+class ----- template 
+
+data --------- display data and capture user interaction 
+
+data = 9 ---------------- {{data}} 9 
+data = 19 ----------------- {{data}} 19
+
+data is always in sync with the template 
+
+writing our logic in the class and using interpolation 
+
+change detetor makes sure that component's class and template are in sync with each other
+ every componnet has its own chnage detcetor 
+change detcetor runs in the backround 
+
+when change detector runs , we do not know But if one of these things happen , change detector will surely run 
+
+1. pefrom an event . raise and event . you click a button There is an event raised 
+   events which are part of ngZone 
+2. whenever you make an API call. 
+3. whenever you execute asynchrnous javascript functions such that setInterval ()
+
+For the CountComponent, the change detection strategy is set to onPush
+
+AppComponent is not passing a new reference (object) to the CountComponent
+
+Now you need to make sure that Angular runs the change detector for the CountComponent and updates the view. How will you achieve this?
+
+I tell you that to improve reduce number of checks 
+
+1. You set component change detection startegy to onPush 
+
+pass new object from the parent componnet 
+
+find data changed 
+and if data changed then manaually run the change detector 
+
+Create a child component - onPush 
+Make sure that parents components does not pass new object 
+In the child component 
+	1. Find data is changed in the parent component 
+        2. if data is changed then run the change detector manually 
+
+
+async pipe 
+
+1- it works with observable 
+
+2- it subscribed to data change 
+
+3-  if data changes it runs Change Detector Manually 
+
+4 - when coponent is destroyed it unsubcribes 
+
+
+1. whenever possible do lazy load of modules 
+
+2. always use provideIn options 
+
+3. always use pipes 
+
+4. For child components make sure to put strategy to onPush 
+
+5. make sure to use async pipe 
+
+6. if not using async pipe , make sure to unsuscribe to the observable 
+
+7. always make api call in the service 
+
+8. always write DOM manipulation in the directives 
+
+9. Never create (untill you have  very very strong reason) custom structural directive 
+
+10. Use combination of subjects and observable inside a service to share data between components 
+
+11. use local storage and observable to maintain state 
+
+12. be very careful and do lot of discusison before using loibrray such as ngRx 
+
+13. identify smart and dumb component 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
