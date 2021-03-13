@@ -1,0 +1,74 @@
+
+How to get data in a dumb component (presenter component) 
+
+Parent component can access data/method of child component in its template 
+
+Parent component can access data/method of child component in its class 
+
+Can we have a smart component inside another smart component 
+
+do you fully understand sequence of ngOnChange and ngOnInit and contructor 
+
+how components not related to each other communicate 
+
+
+
+
+   Sequence of LifeCycle hooks 
+
+
+    constrcutor() - 1 
+
+      If component has @Input decorated property 
+
+       constructor()-1 
+       ngOnChanges() - 2
+       ngOnInit() -3 
+       ngOnChanges()
+        ngOnchanges()  
+       whenever value in any of @Input decorated properties change, ngOnChanges() will be called. 
+  ngOnInit() is called only once 
+
+
+      If component does not have @Input decorarted property 
+        constructor() - 1
+        ngOnInit() - 2 
+      ngOnChanges() will not be called. 
+
+
+Parent component can access data/method of child component in its template 
+  template refernce variable 
+
+Parent component can access data/method of child component in its class
+
+
+  Child 1 - button1 
+  Child 2 -  MyButton
+  AppComponent 
+ whenever user clicks on button1 of child1 , run a business logic in app component and on basis of that enable/disable mybutton of child2 component 
+
+Child 1 - raise an event 
+app component - call a function and on basis of that set a variable called ISCHILD2MYBUTTONENABLED 
+You pass ISCHILD2MYBUTTONENABLED  in one of the @input decorated property of child 2 and in child 2 ngOnchanges() set local poperty and on basis of that in template [disabled] = ISCHILD2MYBUTTONENABLED  
+
+
+Child 1 - raise an event 
+app component - call a function and make child2 as @ViewChild in the app component itself chanmge the [disabled]  property 
+
+Custom Attribute Directives 
+
+1. credit card directive 
+2. maps directives etc. 
+
+Host - Element on which you apply the attribute dircetive
+@HostListener() - To capture events raised on the host inside attribute directive 
+@HostBinding() - To work with propertis of host inside attribute directive 
+
+Example of hosts - input, table, div, maps 
+
+   
+
+
+
+
+
